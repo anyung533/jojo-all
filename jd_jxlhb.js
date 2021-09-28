@@ -1,13 +1,10 @@
 /*
-京喜领88元红包
-活动入口：京喜app-》我的-》京喜领88元红包
-助力逻辑：先自己京东账号相互助力，如有剩余助力机会，则助力作者
-温馨提示：如提示助力火爆，可尝试寻找京东客服
-脚本兼容: Quantumult X, Surge, Loon, JSBox, Node.js
+
 ==============Quantumult X==============
 [task_local]
 #京喜领88元红包
-5 0 * * * jd_jxlhb.js, tag=京喜领88元红包
+4 15 * * * jd_jxlhb.js
+
 
  */
 const $ = new Env('京喜领88元红包');
@@ -45,7 +42,7 @@ const BASE_URL = 'https://m.jingxi.com/cubeactive/steprewardv3'
   if (res && res.activeId) $.activeId = res.activeId;
   $.authorMyShareIds = [...((res && res.codes) || [])];
   //开启红包,获取互助码
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < cookiesArr.length; i++) {
     cookie = cookiesArr[i];
     $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1])
     $.index = i + 1;
@@ -73,7 +70,7 @@ const BASE_URL = 'https://m.jingxi.com/cubeactive/steprewardv3'
     $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
     $.canHelp = true;
     UA = UAInfo[$.UserName]
-    for (let j = 0; j < $.packetIdArr.length && $.canHelp; j++) {
+    for (let j = 0; j < 3; j++) {
       console.log(`【${$.UserName}】去助力【${$.packetIdArr[j].userName}】邀请码：${$.packetIdArr[j].strUserPin}`);
       if ($.UserName === $.packetIdArr[j].userName) {
         console.log(`助力失败：不能助力自己`)
@@ -306,7 +303,7 @@ function getAuthorShareCode(url) {
 
 function taskurl(function_path, body = '', stk) {
   let url = `${BASE_URL}/${function_path}?activeId=${$.activeId}&publishFlag=1&channel=7&${body}&sceneval=2&g_login_type=1&timestamp=${Date.now()}&_=${Date.now() + 2}&_ste=1`
-  const deviceId = randomString() || ''
+  const deviceId = UA.split(';') && UA.split(';')[4] || ''
   url += `&phoneid=${deviceId}`
   url += `&stepreward_jstoken=${
     Math.random().toString(36).slice(2, 10) +
