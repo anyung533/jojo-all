@@ -48,6 +48,8 @@ const BASE_URL = 'https://m.jingxi.com/cubeactive/steprewardv3'
     $.index = i + 1;
     $.isLogin = true
     $.nickName = ''
+    UA = `jdpingou;iPhone;4.13.0;14.4.2;${randomString(40)};network/wifi;model/iPhone10,2;appBuild/100609;ADID/00000000-0000-0000-0000-000000000000;supportApplePay/1;hasUPPay/0;pushNoticeIsOpen/1;hasOCPay/0;supportBestPay/0;session/${Math.random * 98 + 1};pap/JA2019_3111789;brand/apple;supportJDSHWK/1;Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148`
+    UAInfo[$.UserName] = UA
     await TotalBean();
     console.log(`\n*****开始【京东账号${$.index}】${$.nickName || $.UserName}*****\n`);
     if (!$.isLogin) {
@@ -58,9 +60,7 @@ const BASE_URL = 'https://m.jingxi.com/cubeactive/steprewardv3'
       }
       continue
     }
-    UA = `jdpingou;iPhone;4.13.0;14.4.2;${randomString(40)};network/wifi;model/iPhone10,2;appBuild/100609;ADID/00000000-0000-0000-0000-000000000000;supportApplePay/1;hasUPPay/0;pushNoticeIsOpen/1;hasOCPay/0;supportBestPay/0;session/${Math.random * 98 + 1};pap/JA2019_3111789;brand/apple;supportJDSHWK/1;Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148`
     await main();
-    UAInfo[$.UserName] = UA
   }
   //互助
   console.log(`\n\n自己京东账号助力码：\n${JSON.stringify($.packetIdArr)}\n\n`);
@@ -70,7 +70,7 @@ const BASE_URL = 'https://m.jingxi.com/cubeactive/steprewardv3'
     $.UserName = decodeURIComponent(cookie.match(/pt_pin=([^; ]+)(?=;?)/) && cookie.match(/pt_pin=([^; ]+)(?=;?)/)[1]);
     $.canHelp = true;
     UA = UAInfo[$.UserName]
-    for (let j = 0; j < 3 && $.canHelp; j++) {
+    for (let j = 0; j < 3; j++) {
       console.log(`【${$.UserName}】去助力【${$.packetIdArr[j].userName}】邀请码：${$.packetIdArr[j].strUserPin}`);
       if ($.UserName === $.packetIdArr[j].userName) {
         console.log(`助力失败：不能助力自己`)
