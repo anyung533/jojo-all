@@ -29,11 +29,11 @@ All变量适用
 ============Quantumultx===============
 [task_local]
 #10.25~11.12 立即入会 瓜分百万京豆
-47 2 1-12,25-31 10,11 * https://raw.githubusercontent.com/smiek2221/scripts/master/gua_opencard49.js, tag=10.25~11.12 立即入会 瓜分百万京豆, enabled=true
+47 2 1-12,25-31 10,11 * gua_opencard49.js, tag=10.25~11.12 立即入会 瓜分百万京豆, enabled=true
 
 */
-let guaopencard_addSku = "false"
-let guaopencard = "false"
+let guaopencard_addSku = "true"
+let guaopencard = "true"
 let guaopenwait = "0"
 
 const $ = new Env('10.25~11.12 立即入会 瓜分百万京豆');
