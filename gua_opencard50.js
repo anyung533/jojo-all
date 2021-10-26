@@ -36,14 +36,14 @@ All变量适用
 ============Quantumultx===============
 [task_local]
 #10.25~10.30 联合开卡
-47 1 25-30 10 * https://raw.githubusercontent.com/smiek2221/scripts/master/gua_opencard50.js, tag=10.25~10.30 联合开卡, enabled=true
+47 1 25-30 10 * gua_opencard50.js, tag=10.25~10.30 联合开卡, enabled=true
 
 
 */
-let guaopencard_addSku = "false"
-let guaopencard = "false"
+let guaopencard_addSku = "true"
+let guaopencard = "true"
 let guaopenwait = "0"
-let guaopencard_draw = "0"
+let guaopencard_draw = "3"
 
 const $ = new Env('10.25~10.30 联合开卡');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
