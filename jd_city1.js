@@ -6,7 +6,7 @@ cron 0 23 * * *
 const $ = new Env('城城领现金纯内部');
 const notify = $.isNode() ? require('./sendNotify') : '';
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
-let exchangeFlag = $.getdata('jdJxdExchange') || false;//是否开启自动抽奖，建议活动快结束开启，默认关闭
+let exchangeFlag = $.getdata('jdJxdExchange') || true;//是否开启自动抽奖，建议活动快结束开启，默认关闭
 let cookiesArr = [], cookie = '', message;
 if ($.isNode()) {
     Object.keys(jdCookieNode).forEach((item) => {
