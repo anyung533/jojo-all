@@ -32,11 +32,11 @@ All变量适用
 ============Quantumultx===============
 [task_local]
 #11.01~11.12 惠聚11.11好物乐享不停
-47 4 1-12 11 * https://raw.githubusercontent.com/smiek2121/scripts/master/gua_opencard53.js, tag=11.01~11.12 惠聚11.11好物乐享不停, enabled=true
+47 4 1-12 11 * gua_opencard53.js, tag=11.01~11.12 惠聚11.11好物乐享不停, enabled=true
 
 */
-let guaopencard_addSku = "false"
-let guaopencard = "false"
+let guaopencard_addSku = "true"
+let guaopencard = "true"
 let guaopenwait = "0"
 
 const $ = new Env('11.01~11.12 惠聚11.11好物乐享不停');
