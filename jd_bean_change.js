@@ -54,7 +54,7 @@ let cookiesArr = [], cookie = '';
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
 let intPerSent = 0;
 let i = 0;
-let DisableCash = "false";
+let DisableCash = "trur";
 let llShowMonth = false;
 let Today = new Date();
 let RemainMessage = '\n';
@@ -67,7 +67,7 @@ RemainMessage += '【领现金】京东->我的->东东萌宠->领现金(微信�
 RemainMessage += '【东东农场】京东->我的->东东农场,完成是京东红包,可以用于京东app的任意商品\n';
 RemainMessage += '【京喜工厂】京喜->我的->京喜工厂,完成是商品红包,用于购买指定商品(不兑换会过期)\n';
 RemainMessage += '【其他】京喜红包只能在京喜使用,其他同理';
-let BEANCHANGE_PERSENT="10"
+let BEANCHANGE_PERSENT="130"
 
 let WP_APP_TOKEN_ONE = "";
 let TempBaipiao = "";
