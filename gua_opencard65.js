@@ -32,11 +32,11 @@ All变量适用
 ============Quantumultx===============
 [task_local]
 #11.05~11.12 11.11狂欢节 品牌盛典
-47 1 5-12 11 * https://raw.githubusercontent.com/smiek2121/scripts/master/gua_opencard65.js, tag=11.05~11.12 11.11狂欢节 品牌盛典, enabled=true
+47 1 5-12 11 * gua_opencard65.js, tag=11.05~11.12 11.11狂欢节 品牌盛典, enabled=true
 
 */
-let guaopencard_addSku = "false"
-let guaopencard = "false"
+let guaopencard_addSku = "true"
+let guaopencard = "true"
 let guaopenwait = "0"
 
 const $ = new Env('11.05~11.12 11.11狂欢节 品牌盛典');
