@@ -4,7 +4,6 @@
 # 环境变量kois中填入需要助力的pt_pin，有多个请用 '@'或'&'或空格 符号连接,不填默认全部账号内部随机助力
 # 脚本内或环境变量填写，优先环境变量
 # export JD_COOKIE="第1个cookie&第2个cookie"
-0 1 * * * jd_angryKoi.py
 # export kois=" 第1个cookie的pin & 第2个cookie的pin "
 # 11/4 11:23 增加自动开红包
 
