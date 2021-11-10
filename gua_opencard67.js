@@ -36,13 +36,14 @@ All变量适用
 ============Quantumultx===============
 [task_local]
 #11.6~11.12 联合开卡
-47 12 6-12 11 * https://raw.githubusercontent.com/smiek2121/scripts/master/gua_opencard67.js, tag=11.6~11.12 联合开卡, enabled=true
+47 12 6-12 11 * gua_opencard67.js, tag=11.6~11.12 联合开卡, enabled=true
 
-*/
-let guaopencard_addSku = "false"
-let guaopencard = "false"
+*/    
+let guaopencard_addSku = "true"
+let guaopencard67 = "true"        
+let guaopencard = "true"
 let guaopenwait = "0"
-let guaopencard_draw = "0"
+let guaopencard_draw = "3"
 
 const $ = new Env('11.6~11.12 联合开卡-67');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
