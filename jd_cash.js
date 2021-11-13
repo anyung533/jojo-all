@@ -3,7 +3,7 @@
 ============Quantumultx===============
 [task_local]
 #签到领现金
-22 0-23/4 * * * jd_cash.js
+22 0-23/8 * * * jd_cash.js
 
  */
 const $ = new Env('签到领现金');
