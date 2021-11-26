@@ -37,8 +37,8 @@ cron:47 3 25-30,1 11,12 *
 47 3 25-30,1 11,12 * https://raw.githubusercontent.com/smiek2121/scripts/master/gua_opencard72.js, tag=11.25~12.1 全球大牌盛典 黑五狂欢购, enabled=true
 
 */
-let guaopencard_addSku = "false"
-let guaopencard = "false"
+let guaopencard_addSku = "true"
+let guaopencard = "true"
 let guaopenwait = "0"
 
 const $ = new Env('11.25~12.1 全球大牌盛典 黑五狂欢购');
