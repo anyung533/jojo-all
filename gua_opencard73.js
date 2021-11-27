@@ -37,13 +37,13 @@ cron:47 4 27-30,1,2 11,12 *
 ============Quantumultx===============
 [task_local]
 #11.27~12.2 联合开卡
-47 4 27-30,1,2 11,12 * https://raw.githubusercontent.com/smiek2121/scripts/master/gua_opencard73.js, tag=11.27~12.2 联合开卡, enabled=true
+47 4 27-30,1,2 11,12 * gua_opencard73.js, tag=11.27~12.2 联合开卡, enabled=true
 
 */
-let guaopencard_addSku = "false"
-let guaopencard = "false"
+let guaopencard_addSku = "true"
+let guaopencard = "true"
 let guaopenwait = "0"
-let guaopencard_draw = "0"
+let guaopencard_draw = "y"
 
 const $ = new Env('11.27~12.2 联合开卡-73');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
