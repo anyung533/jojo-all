@@ -1,6 +1,6 @@
 /**
 过期京豆兑换为喜豆
-cron 33 9 * * * jd_exchangejxbeans.js
+cron 33 23 * * * jd_exchangejxbeans.js
 TG频道：https://t.me/sheeplost
 */
 const $ = new Env('即将过期京豆兑换为喜豆');
