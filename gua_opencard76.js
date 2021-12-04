@@ -35,13 +35,13 @@ cron:47 3 3-12 12 *
 ============Quantumultx===============
 [task_local]
 #12.3~12.12 12.12 好物狂欢盛典
-47 3 3-12 12 * https://raw.githubusercontent.com/smiek2121/scripts/master/gua_opencard76.js, tag=12.3~12.12 12.12 好物狂欢盛典, enabled=true
+47 3 3-12 12 * gua_opencard76.js, tag=12.3~12.12 12.12 好物狂欢盛典, enabled=true
 
 */
-let guaopencard_addSku = "false"
-let guaopencard = "false"
+let guaopencard_addSku = "true"
+let guaopencard = "true"
 let guaopenwait = "0"
-let guaopencard_draw = "0"
+let guaopencard_draw = "5"
 
 const $ = new Env('12.3~12.12 12.12 好物狂欢盛典');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
