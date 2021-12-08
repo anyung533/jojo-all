@@ -35,13 +35,13 @@ cron:47 4 8-15 12 *
 ============Quantumultx===============
 [task_local]
 #12.8~12.15 12.12 大牌联合 宠爱有礼
-47 4 8-15 12 * https://raw.githubusercontent.com/smiek2121/scripts/master/gua_opencard79.js, tag=12.8~12.15 12.12 大牌联合 宠爱有礼, enabled=true
+47 4 8-15 12 * gua_opencard79.js, tag=12.8~12.15 12.12 大牌联合 宠爱有礼, enabled=true
 
 */
-let guaopencard_addSku = "false"
-let guaopencard = "false"
+let guaopencard_addSku = "true"
+let guaopencard = "true"
 let guaopenwait = "0"
-let guaopencard_draw = "0"
+let guaopencard_draw = "3"
 
 const $ = new Env('12.8~12.15 12.12 大牌联合 宠爱有礼');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
