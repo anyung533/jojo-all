@@ -30,13 +30,13 @@ cron:30 5 11-25 12 *
 ============Quantumultx===============
 [task_local]
 #12.10~12.25 狂欢日联合盛典
-30 5 11-25 12 * https://raw.githubusercontent.com/smiek2121/scripts/master/gua_opencard81.js, tag=12.10~12.25 狂欢日联合盛典, enabled=true
+30 5 11-25 12 * gua_opencard81.js, tag=12.10~12.25 狂欢日联合盛典, enabled=true
 
 */
-let guaopencard_addSku = "false"
-let guaopencard = "false"
+let guaopencard_addSku = "true"
+let guaopencard = "true"
 let guaopenwait = "0"
-let guaopencard_draw = "0"
+let guaopencard_draw = "3"
 
 const $ = new Env('12.10~12.25 狂欢日联合盛典');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
