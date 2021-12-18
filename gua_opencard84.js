@@ -31,13 +31,13 @@ cron:30 1 18-31/2,1-3/2 12,1 *
 ============Quantumultx===============
 [task_local]
 #12.17~1.3 双旦寻宝 玩转大富翁
-30 1 18-31/2,1-3/2 12,1 * https://raw.githubusercontent.com/smiek2121/scripts/master/gua_opencard84.js, tag=12.17~1.3 双旦寻宝 玩转大富翁, enabled=true
+30 1 18-31/2,1-3/2 12,1 * gua_opencard84.js, tag=12.17~1.3 双旦寻宝 玩转大富翁, enabled=true
 
 */
-let guaopencard_addSku = "false"
-let guaopencard = "false"
+let guaopencard_addSku = "true"
+let guaopencard = "true"
 let guaopenwait = "0"
-let guaopencard_draw = "0"
+let guaopencard_draw = "3"
 
 const $ = new Env('12.17~1.3 双旦寻宝 玩转大富翁');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
