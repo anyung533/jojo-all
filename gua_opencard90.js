@@ -32,17 +32,17 @@ All变量适用
 过10分钟再执行
 
 
-cron:30 3 26-30/2,2 *
+cron:30 3 26-30/2,2 12,1 *
 ============Quantumultx===============
 [task_local]
 #12.23~1.2 联合开卡
-30 3 26-30/2,2 * https://raw.githubusercontent.com/smiek2121/scripts/master/gua_opencard90.js, tag=12.23~1.2 联合开卡, enabled=true
+30 3 26-30/2,2 12,1 * gua_opencard90.js, tag=12.23~1.2 联合开卡, enabled=true
 
 */
-let guaopencard_addSku = "false"
-let guaopencard = "false"
+let guaopencard_addSku = "true"
+let guaopencard = "true"
 let guaopenwait = "0"
-let guaopencard_draw = "0"
+let guaopencard_draw = "6"
 
 const $ = new Env('12.23~1.2 联合开卡-90');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
