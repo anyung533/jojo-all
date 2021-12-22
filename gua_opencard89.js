@@ -32,11 +32,11 @@ cron:30 3 23-30/2 12 *
 ============Quantumultx===============
 [task_local]
 #12.18~12.30 京选大牌 超会宠你
-30 3 23-30/2 12 * https://raw.githubusercontent.com/smiek2121/scripts/master/gua_opencard89.js, tag=12.18~12.30 京选大牌 超会宠你, enabled=true
+30 3 23-30/2 12 * gua_opencard89.js, tag=12.18~12.30 京选大牌 超会宠你, enabled=true
 
 */
-let guaopencard_addSku = "false"
-let guaopencard = "false"
+let guaopencard_addSku = "true"
+let guaopencard = "true"
 let guaopenwait = "0"
 
 const $ = new Env('12.18~12.30 京选大牌 超会宠你');
