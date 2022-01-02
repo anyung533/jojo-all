@@ -35,13 +35,13 @@ cron:30 2 3-9/2 1 *
 ============Quantumultx===============
 [task_local]
 #12.31~1.9 大牌联合 年货盛宴
-30 2 3-9/2 1 * https://raw.githubusercontent.com/smiek2121/scripts/master/gua_opencard92.js, tag=12.31~1.9 大牌联合 年货盛宴, enabled=true
+30 2 3-9/2 1 * gua_opencard92.js, tag=12.31~1.9 大牌联合 年货盛宴, enabled=true
 
 */
-let guaopencard_addSku = "false"
-let guaopencard = "false"
+let guaopencard_addSku = "true"
+let guaopencard = "true"
 let guaopenwait = "0"
-let guaopencard_draw = "0"
+let guaopencard_draw = "y"
 
 const $ = new Env('12.31~1.9 大牌联合 年货盛宴');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
