@@ -29,13 +29,13 @@ try:
 except:
     logger.info("无推送文件")
 
-ver = 1230
+ver = 10102
 
 
 # 登录青龙 返回值 token
 def get_qltoken(username, password):
     logger.info("Token失效, 新登陆\n")
-    url = "http://127.0.0.1:{0}/api/login".format(port)
+    url = "http://127.0.0.1:{0}/api/user/login".format(port)
     payload = {
         'username': username,
         'password': password
@@ -123,7 +123,7 @@ def check_ck(ck):
         logger.info("不检查账号有效性\n--------------------\n")
         return False
     else:
-        url = 'https://wq.jd.com/user_new/info/GetJDUserInfoUnion?orgFlag=JD_PinGou_New&callSource=mainorder'
+        url = 'https://me-api.jd.com/user_new/info/GetJDUserInfoUnion'
         headers = {
             'Cookie': ck,
             'Referer': 'https://home.m.jd.com/myJd/home.action',
