@@ -34,14 +34,14 @@ cron:30 2 28,7-27/3 1 *
 ============Quantumultx===============
 [task_local]
 #1.8~1.27 集年味卡 享年味盛典
-30 2 28,7-28/3 1 * https://raw.githubusercontent.com/smiek2121/scripts/master/gua_opencard97.js, tag=1.8~1.27 集年味卡 享年味盛典, enabled=true
+30 2 28,7-28/3 1 * gua_opencard97.js, tag=1.8~1.27 集年味卡 享年味盛典, enabled=true
 
 */
-let guaopencard_addSku = "false"
-let guaopencard = "false"
-let guaopencard_compositeCard = "false" // 集卡 默认不集卡 需要请设置"true"
+let guaopencard_addSku = "true"
+let guaopencard = "true"
+let guaopencard_compositeCard = "true" // 集卡 默认不集卡 需要请设置"true"
 let guaopenwait = "0"
-let guaopencard_draw = "0"
+let guaopencard_draw = "3"
 
 const $ = new Env('1.8~1.27 集年味卡 享年味盛典');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
