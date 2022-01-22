@@ -32,11 +32,11 @@ cron:30 4 1-15/3,17-31/3 1,2 *
 ============Quantumultx===============
 [task_local]
 #1.17～2.15 品质女装 年终狂欢
-30 4 1-15/3,17-31/3 1,2 * https://raw.githubusercontent.com/smiek2121/scripts/master/gua_opencard112.js, tag=1.17～2.15 品质女装 年终狂欢, enabled=true
+30 4 1-15/3,17-31/3 1,2 * gua_opencard112.js, tag=1.17～2.15 品质女装 年终狂欢, enabled=true
 
 */
-let guaopencard_addSku = "false"
-let guaopencard = "false"
+let guaopencard_addSku = "true"
+let guaopencard = "true"
 let guaopenwait = "0"
 
 const $ = new Env('1.17～2.15 品质女装 年终狂欢');
