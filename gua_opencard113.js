@@ -34,13 +34,14 @@ cron:30 1 23,11-22/3 2 *
 ============Quantumultx===============
 [task_local]
 #2.11~2.22 遇见爱 遇见你
-30 1 23,11-22/3 2 * https://raw.githubusercontent.com/smiek2121/scripts/master/gua_opencard113.js, tag=2.11~2.22 遇见爱 遇见你, enabled=true
+30 1 23,11-22/3 2 * gua_opencard113.js, tag=2.11~2.22 遇见爱 遇见你, enabled=true
 
 */
-let guaopencard_addSku = "false"
-let guaopencard = "false"
-let guaopencard_compositeCard = "false" // 集卡 默认不集卡 需要请设置"true"
-let guaopenwait = "0"
+let guaopencard113="true"
+let guaopencard_addSku = "true"
+let guaopencard = "true"
+let guaopencard_compositeCard = "true" // 集卡 默认不集卡 需要请设置"true"
+let guaopenwait = "3"
 let guaopencard_draw = "0"
 
 const $ = new Env('2.11~2.22 遇见爱 遇见你');

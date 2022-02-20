@@ -34,13 +34,13 @@ cron:30 1 19-26/3 2 *
 ============Quantumultx===============
 [task_local]
 #2.19～2.26 奢宠会员 瓜分百万京豆
-30 1 19-26/3 2 * https://raw.githubusercontent.com/smiek2121/scripts/master/gua_opencard114.js, tag=2.19～2.26 奢宠会员 瓜分百万京豆, enabled=true
+30 1 19-26/3 2 * gua_opencard114.js, tag=2.19～2.26 奢宠会员 瓜分百万京豆, enabled=true
 
 */
-let guaopencard_addSku = "false"
-let guaopencard = "false"
+let guaopencard_addSku = "true"
+let guaopencard = "true"
 let guaopenwait = "0"
-let guaopencard_draw = "0"
+let guaopencard_draw = "3"
 
 const $ = new Env('2.19～2.26 奢宠会员 瓜分百万京豆');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
