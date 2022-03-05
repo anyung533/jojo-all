@@ -11,6 +11,7 @@ import os
 import sys
 import logging
 import time
+import re
 
 if "WSKEY_DEBUG" in os.environ:
     logging.basicConfig(level=logging.DEBUG, format='%(message)s')
@@ -33,7 +34,7 @@ except Exception as err:
     logger.debug(str(err))
     logger.info("无推送文件")
 
-ver = 20203
+ver = 20218
 
 
 # 登录青龙 返回值 token
@@ -125,7 +126,30 @@ def get_ck():
 
 # 返回值 bool
 def check_ck(ck):
-    if 1 == 1:
+    searchObj = re.search(r'pt_pin=([^;\s]+)', ck, re.M | re.I)
+    if searchObj:
+        pin = searchObj.group(1)
+    else:
+        pin = ck.split(";")[1]
+    if "WSKEY_UPDATE_HOUR" in os.environ:
+        updateHour = 23
+        if os.environ["WSKEY_UPDATE_HOUR"].isdigit():
+            updateHour = int(os.environ["WSKEY_UPDATE_HOUR"])
+        nowTime = time.time()
+        updatedAt = 0.0
+        searchObj = re.search(r'__time=([^;\s]+)', ck, re.M | re.I)
+        if searchObj:
+            updatedAt = float(searchObj.group(1))
+        if nowTime - updatedAt >= (updateHour * 60 * 60) - (10 * 60):
+            logger.info(str(pin) + ";即将到期或已过期\n")
+            return False
+        else:
+            remainingTime = (updateHour * 60 * 60) - (nowTime - updatedAt)
+            hour = int(remainingTime / 60 / 60)
+            minute = int((remainingTime % 3600) / 60)
+            logger.info(str(pin) + ";未到期，{0}时{1}分后更新\n".format(hour, minute))
+            return True
+    elif 1 == 1:
         logger.info("不检查账号有效性\n--------------------\n")
         return False
     else:
@@ -144,7 +168,6 @@ def check_ck(ck):
         else:
             if res.status_code == 200:
                 code = int(json.loads(res.text)['retcode'])
-                pin = ck.split(";")[1]
                 if code == 0:
                     logger.info(str(pin) + ";状态正常\n")
                     return True
@@ -180,9 +203,9 @@ def getToken(wskey):
         res_json = json.loads(res.text)
         tokenKey = res_json['tokenKey']
     except Exception as err:
-        logger.info("JD_WSKEY接口抛出错误 尝试重试 更换IP❗❗❗❗")
-        tokenKey = '转换出错'
-        return appjmp(wskey, tokenKey)
+        logger.info("JD_WSKEY接口抛出错误 尝试重试 更换IP")
+        logger.info(str(err))
+        return False, wskey
     else:
         return appjmp(wskey, tokenKey)
 
@@ -191,7 +214,7 @@ def getToken(wskey):
 def appjmp(wskey, tokenKey):
     wskey = "pt_" + str(wskey.split(";")[0])
     if tokenKey == 'xxx':
-        logger.info(str(wskey) + ";WsKey状态失效\n--------------------\n")
+        logger.info(str(wskey) + ";疑似IP风控等问题 默认为失效\n--------------------\n")
         return False, wskey
     headers = {
         'User-Agent': ua,
@@ -214,7 +237,10 @@ def appjmp(wskey, tokenKey):
             res_set = res.cookies.get_dict()
             pt_key = 'pt_key=' + res_set['pt_key']
             pt_pin = 'pt_pin=' + res_set['pt_pin']
-            jd_ck = str(pt_key) + ';' + str(pt_pin) + ';'
+            if "WSKEY_UPDATE_HOUR" in os.environ:
+                jd_ck = str(pt_key) + ';' + str(pt_pin) + ';__time=' + str(time.time()) + ';'
+            else:
+                jd_ck = str(pt_key) + ';' + str(pt_pin) + ';'
         except Exception as err:
             logger.info("JD_appjmp提取Cookie错误 请重试或者更换IP❗❗❗❗\n")
             logger.info(str(err))
@@ -393,14 +419,14 @@ def check_cloud():
             return i
     logger.info("\n云端地址全部失效, 请检查网络!")
     try:
-        send('WSKEY转换', '云端地址失效. 请检查网络.')
+        send('WSKEY转换', '云端地址失效. 请联系作者或者检查网络.')
     except Exception as err:
         logger.debug(str(err))
         logger.info("通知发送失败")
     sys.exit(1)
 
 
-if __name__ == '__main__':
+def check_port():
     logger.info("\n--------------------\n")
     if "QL_PORT" in os.environ:
         try:
@@ -409,7 +435,7 @@ if __name__ == '__main__':
             logger.debug(str(err))
             logger.info("变量格式有问题...\n格式: export QL_PORT=\"端口号\"")
             logger.info("使用默认端口5700")
-            port = 5700
+            return 5700
     else:
         port = 5700
     if not ql_check(port):
@@ -418,6 +444,11 @@ if __name__ == '__main__':
         sys.exit(1)
     else:
         logger.info(str(port) + "端口检查通过")
+        return port
+
+
+if __name__ == '__main__':
+    port = check_port()
     token = ql_login()  # 获取青龙 token
     s = requests.session()
     s.headers.update({"authorization": "Bearer " + str(token)})
@@ -429,6 +460,10 @@ if __name__ == '__main__':
     ua = cloud_arg['User-Agent']
     wslist = get_wskey()
     envlist = get_env()
+    if "WSKEY_SLEEP" in os.environ and str(os.environ["WSKEY_SLEEP"]).isdigit():
+        sleepTime = int(os.environ["WSKEY_SLEEP"])
+    else:
+        sleepTime = 3
     for ws in wslist:
         wspin = ws.split(";")[0]
         if "pin" in wspin:
@@ -437,7 +472,18 @@ if __name__ == '__main__':
             if return_serch[0]:  # bool: True 搜索到账号
                 jck = str(return_serch[1])  # 拿到 JD_COOKIE
                 if not check_ck(jck):  # bool: False 判定 JD_COOKIE 有效性
-                    return_ws = getToken(ws)  # 使用 WSKEY 请求获取 JD_COOKIE bool jd_ck
+                    tryCount = 5
+                    if "WSKEY_TRY_COUNT" in os.environ:
+                        if os.environ["WSKEY_TRY_COUNT"].isdigit():
+                            tryCount = int(os.environ["WSKEY_TRY_COUNT"])
+                    for count in range(tryCount):
+                        count += 1
+                        return_ws = getToken(ws)  # 使用 WSKEY 请求获取 JD_COOKIE bool jd_ck
+                        if return_ws[0]:
+                            break
+                        if count < tryCount:
+                            logger.info("{0} 秒后重试，剩余次数：{1}\n".format(sleepTime, tryCount - count))
+                            time.sleep(sleepTime)
                     if return_ws[0]:  # bool: True
                         nt_key = str(return_ws[1])
                         # logger.info("wskey转pt_key成功", nt_key)
@@ -447,12 +493,12 @@ if __name__ == '__main__':
                     else:
                         if "WSKEY_AUTO_DISABLE" in os.environ:  # 从系统变量中获取 WSKEY_AUTO_DISABLE
                             logger.info(str(wspin) + "账号失效")
-                            text = "账号: {0} WsKey失效".format(wspin)
+                            text = "账号: {0} WsKey疑似失效".format(wspin)
                         else:
                             eid = return_serch[2]
                             logger.info(str(wspin) + "账号禁用")
                             ql_disable(eid)
-                            text = "账号: {0} WsKey失效, 已禁用Cookie".format(wspin)
+                            text = "账号: {0} WsKey疑似失效, 已禁用Cookie".format(wspin)
                         try:
                             send('WsKey转换脚本', text)
                         except Exception as err:
@@ -470,6 +516,8 @@ if __name__ == '__main__':
                     nt_key = str(return_ws[1])
                     logger.info("wskey转换成功\n")
                     ql_insert(nt_key)
+            logger.info("暂停{0}秒\n".format(sleepTime))
+            time.sleep(sleepTime)
         else:
             logger.info("WSKEY格式错误\n--------------------\n")
     logger.info("执行完成\n--------------------")
