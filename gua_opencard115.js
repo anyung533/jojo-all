@@ -37,11 +37,11 @@ cron:30 1 19,3-18/3 3 *
 30 1 19,3-18/3 3 * https://raw.githubusercontent.com/smiek2121/scripts/master/gua_opencard115.js, tag=3.3~3.18 约惠女王节 嗨购不停, enabled=true
 
 */
-let guaopencard_addSku = "false"
-let guaopencard = "false"
-let guaopencard_compositeCard = "false" // 集卡 默认不集卡 需要请设置"true"
+let guaopencard_addSku = "true"
+let guaopencard = "true"
+let guaopencard_compositeCard = "true" // 集卡 默认不集卡 需要请设置"true"
 let guaopenwait = "0"
-let guaopencard_draw = "0"
+let guaopencard_draw = "3"
 
 const $ = new Env('3.3~3.18 约惠女王节 嗨购不停');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
