@@ -34,10 +34,10 @@ cron:30 2,19 2,5,8,10,23-31/3 3,4 *
 30 2,19 2,5,8,10,23-31/3 3,4 * https://raw.githubusercontent.com/smiek2121/scripts/master/gua_opencard123.js, tag=3.23~4.10 动感乐活，约惠精彩, enabled=true
 
 */
-let guaopencard_addSku = "false"
-let guaopencard = "false"
+let guaopencard_addSku = "true"
+let guaopencard = "true"
 let guaopenwait = "0"
-let guaopencard_draw = "0"
+let guaopencard_draw = "3"
 
 const $ = new Env('3.23~4.10 动感乐活，约惠精彩');
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
