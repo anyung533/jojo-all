@@ -35,8 +35,8 @@ cron:30 1 3-9/3 4 *
 30 1 3-9/3 4 * https://raw.githubusercontent.com/smiek2121/scripts/master/gua_opencard126.js, tag=4.3~4.9 我的新家 超级配, enabled=true
 
 */
-let guaopencard_addSku = "false"
-let guaopencard = "false"
+let guaopencard_addSku = "true"
+let guaopencard = "true"
 let guaopenwait = "0"
 
 const $ = new Env('4.3~4.9 我的新家 超级配');
