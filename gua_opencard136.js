@@ -35,8 +35,8 @@ cron:30 2 18-24/3 4 *
 30 2 18-24/3 4 * https://raw.githubusercontent.com/smiek2121/scripts/master/gua_opencard136.js, tag=4.18~4.24 发现精彩世界，品味趣味人生, enabled=true
 
 */
-let guaopencard_addSku = 'false'
-let guaopencard = 'false'
+let guaopencard_addSku = 'true'
+let guaopencard = 'true'
 let guaopenwait = '0'
 
 const $ = new Env('4.18~4.24 发现精彩世界，品味趣味人生')
