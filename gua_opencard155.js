@@ -36,10 +36,10 @@ cron:30 1 20-28/3 5 *
 30 1 20-28/3 5 * https://raw.githubusercontent.com/smiek2121/scripts/master/gua_opencard155.js, tag=5.20~5.28 甜蜜派对 五月宠爱季, enabled=true
 
 */
-let guaopencard_addSku = 'false' // 加购
-let guaopencard = 'false' // 执行
+let guaopencard_addSku = 'true' // 加购
+let guaopencard = 'true' // 执行
 let guaopenwait = 0 // 等待（秒）
-let guaopencard_draw = 0 // 抽奖次数
+let guaopencard_draw = 3 // 抽奖次数
 
 const $ = new Env('5.20~5.28 甜蜜派对 五月宠爱季')
 
