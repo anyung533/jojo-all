@@ -35,10 +35,10 @@ cron:30 2 27,29,31 5 *
 30 2 27,29,31 5 * https://raw.githubusercontent.com/smiek2121/scripts/master/gua_opencard161.js, tag=5.27~6.1 我的新家 超级配, enabled=true
 
 */
-let guaopencard_addSku = 'false' // 加购
-let guaopencard = 'false' // 执行
+let guaopencard_addSku = 'true' // 加购
+let guaopencard = 'true' // 执行
 let guaopenwait = 0 // 等待（秒）
-let guaopencard_draw = 0 // 抽奖次数
+let guaopencard_draw = 3 // 抽奖次数
 
 const $ = new Env('5.27~6.1 我的新家 超级配')
 
