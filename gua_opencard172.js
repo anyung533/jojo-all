@@ -35,10 +35,10 @@ cron:
  https://raw.githubusercontent.com/smiek2121/scripts/master/gua_opencard172.js, tag=6.1~6.8 大牌“粽”情献礼, enabled=true
 
 */
-let guaopencard_addSku = 'false' // 加购
-let guaopencard = 'false' // 执行
+let guaopencard_addSku = 'true' // 加购
+let guaopencard = 'true' // 执行
 let guaopenwait = 0 // 等待（秒）
-let guaopencard_draw = 0 // 抽奖次数
+let guaopencard_draw = 3 // 抽奖次数
 
 const $ = new Env('6.1~6.8 大牌“粽”情献礼')
 
