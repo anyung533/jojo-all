@@ -39,10 +39,10 @@ cron:
  https://raw.githubusercontent.com/smiek2121/scripts/master/gua_opencard175.js, tag=无忧酒柜, enabled=true
 
 */
-let guaopencard_addSku = 'false' // 加购
-let guaopencard = 'false' // 执行
+let guaopencard_addSku = 'true' // 加购
+let guaopencard = 'true' // 执行
 let guaopenwait = 0 // 等待（秒）
-let guaopencard_draw = 0 // 抽奖次数
+let guaopencard_draw = 3 // 抽奖次数
 let assistNum = 20 // 助力上限次数
 
 const $ = new Env('无忧酒柜')
