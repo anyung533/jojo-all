@@ -35,10 +35,10 @@ cron:
  https://raw.githubusercontent.com/smiek2121/scripts/master/gua_opencard243.js, tag=10.19~10.26 金秋欢乐购 好物大联盟, enabled=true
 
 */
-let guaopencard_addSku = 'false' // 加购
-let guaopencard = 'false' // 执行
+let guaopencard_addSku = 'true' // 加购
+let guaopencard = 'true' // 执行
 let guaopenwait = 0 // 等待（秒）
-let guaopencard_draw = 0 // 抽奖次数
+let guaopencard_draw = 3 // 抽奖次数
 
 const $ = new Env('10.19~10.26 金秋欢乐购 好物大联盟')
 
