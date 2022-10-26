@@ -37,7 +37,7 @@ cron:
 let guaopencard_addSku = 'true' // 加购
 let guaopencard = 'true' // 执行
 let guaopenwait = 0 // 等待（秒）
-let guaopencard_draw = 0 // 抽奖次数
+let guaopencard_draw = 3 // 抽奖次数
 let whitelist = '' // 白名单 用&隔开 pin值(填中文
 let blacklist = '' // 黑名单 用&隔开 pin值(填中文
 
