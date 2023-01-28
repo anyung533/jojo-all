@@ -1,3 +1,4 @@
+cd /ql/scripts && npm install -g moment
 cd /ql/scripts && pip3 install requests
 cd /ql/scripts && pip3 install --upgrade pip
 cd /ql/scripts && pip3 install jieba
